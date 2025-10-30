@@ -9,7 +9,7 @@ class barang extends Model
     //
     protected $guarded = [];
 
-    protected $table = 'barang';
+    protected $table = 'barangs';
 
     public function detail() {
 

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barang_id')->constrained('barangs', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('faktur_id')->constrained('faktur', 'id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('diskon');
+            $table->integer('diskon')->default(0);
             $table->string('nama_barang');
             $table->bigInteger('harga');
-            $table->bigInteger('subtotal');
+            $table->bigInteger('subtotal')->default(0);
             $table->integer('qty');
             $table->integer('hasil_qty');  
             $table->timestamps();
