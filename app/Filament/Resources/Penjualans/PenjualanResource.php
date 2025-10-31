@@ -14,6 +14,7 @@ use App\Filament\Resources\Penjualans\Pages\ListPenjualans;
 use App\Filament\Resources\Penjualans\Pages\CreatePenjualan;
 use App\Filament\Resources\Penjualans\Schemas\PenjualanForm;
 use App\Filament\Resources\Penjualans\Tables\PenjualansTable;
+use UnitEnum;
 
 class PenjualanResource extends Resource
 {
@@ -26,6 +27,7 @@ class PenjualanResource extends Resource
     protected static ?string $navigationLabel = 'Laporan Penjualan';
     protected static ?string $slug = 'laporan-penjualan'; // url
     protected static ?string $label = 'Laporan Penjualan'; 
+      protected static string | UnitEnum | null $navigationGroup = 'Faktur';
 
     public static function form(Schema $schema): Schema
     {

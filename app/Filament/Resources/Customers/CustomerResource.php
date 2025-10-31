@@ -21,13 +21,13 @@ class CustomerResource extends Resource
 {
     protected static ?string $model = CustomerModel::class;
 
-    protected static string | UnitEnum | null $navigationGroup = 'Settings';
+    protected static string | UnitEnum | null $navigationGroup = 'Kelola';
     
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-user';
 
 
     protected static ?string $recordTitleAttribute = 'nama_customer';
-    protected static ?string $navigationLabel = 'KelolaCustomer';
+    protected static ?string $navigationLabel = 'Kelola Customer';
     protected static ?string $slug = 'kelola-customer'; // url
     protected static ?string $label = 'Kelola Customer'; 
 

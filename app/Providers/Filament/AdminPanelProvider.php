@@ -37,10 +37,19 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            ->navigationGroups([
+                'Faktur',
+                'Master Data',
+            ])
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->spa()
+            // ->topNavigation()    
+            ->sidebarWidth('20rem')
+            ->sidebarCollapsibleOnDesktop()
+
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

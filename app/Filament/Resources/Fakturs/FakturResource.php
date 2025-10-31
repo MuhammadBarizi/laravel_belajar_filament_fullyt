@@ -16,14 +16,17 @@ use App\Filament\Resources\Fakturs\Pages\ListFakturs;
 use App\Filament\Resources\Fakturs\Pages\CreateFaktur;
 use App\Filament\Resources\Fakturs\Schemas\FakturForm;
 use App\Filament\Resources\Fakturs\Tables\FaktursTable;
+use UnitEnum;
 
 class FakturResource extends Resource
 {
     protected static ?string $model = FakturModel::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+       protected static string | UnitEnum | null $navigationGroup = 'Faktur';
       protected static ?string $recordTitleAttribute = 'Nama_Penjualan';
-    protected static ?string $navigationLabel = 'Kelola Faktur';
+    protected static ?string $navigationLabel = 'Faktur';
     protected static ?string $slug = 'kelola_faktur'; // url
     protected static ?string $label = 'Kelola Faktur'; 
 
