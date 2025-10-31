@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Filament\Resources\Penjualans;
+
+use BackedEnum;
+use App\Models\Penjualan;
+use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use App\Models\PenjualanModel;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
+use App\Filament\Resources\Penjualans\Pages\EditPenjualan;
+use App\Filament\Resources\Penjualans\Pages\ListPenjualans;
+use App\Filament\Resources\Penjualans\Pages\CreatePenjualan;
+use App\Filament\Resources\Penjualans\Schemas\PenjualanForm;
+use App\Filament\Resources\Penjualans\Tables\PenjualansTable;
+
+class PenjualanResource extends Resource
+{
+    protected static ?string $model = PenjualanModel::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'kode';
+
+    public static function form(Schema $schema): Schema
+    {
+        return PenjualanForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return PenjualansTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListPenjualans::route('/'),
+            'create' => CreatePenjualan::route('/create'),
+            'edit' => EditPenjualan::route('/{record}/edit'),
+        ];
+    }
+}
