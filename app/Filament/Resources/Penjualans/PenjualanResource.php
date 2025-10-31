@@ -21,7 +21,11 @@ class PenjualanResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'kode';
+
+    protected static ?string $recordTitleAttribute = 'Nama_Penjualan';
+    protected static ?string $navigationLabel = 'Laporan Penjualan';
+    protected static ?string $slug = 'laporan-penjualan'; // url
+    protected static ?string $label = 'Laporan Penjualan'; 
 
     public static function form(Schema $schema): Schema
     {

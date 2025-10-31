@@ -22,6 +22,11 @@ class FakturResource extends Resource
     protected static ?string $model = FakturModel::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+      protected static ?string $recordTitleAttribute = 'Nama_Penjualan';
+    protected static ?string $navigationLabel = 'Kelola Faktur';
+    protected static ?string $slug = 'kelola_faktur'; // url
+    protected static ?string $label = 'Kelola Faktur'; 
+
 
     public static function form(Schema $schema): Schema
     {

@@ -27,7 +27,7 @@ class CustomerResource extends Resource
 
 
     protected static ?string $recordTitleAttribute = 'nama_customer';
-    protected static ?string $navigationLabel = 'Kelola     Customer';
+    protected static ?string $navigationLabel = 'KelolaCustomer';
     protected static ?string $slug = 'kelola-customer'; // url
     protected static ?string $label = 'Kelola Customer'; 
 

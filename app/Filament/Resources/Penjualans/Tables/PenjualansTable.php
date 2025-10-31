@@ -58,7 +58,8 @@ class PenjualansTable
                ->emptyStateActions([
             Action::make('create')
                 ->label('Buat Faktur')
-                ->url(route('filament.admin.resources.fakturs.create'))
+                // point to the Faktur resource index route (use the resource slug as registered)
+                ->url(route('filament.admin.resources.kelola_faktur.index'))
                 ->icon('heroicon-m-plus')
                 ->button(),
         ])
