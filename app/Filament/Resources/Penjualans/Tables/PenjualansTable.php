@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\Penjualans\Tables;
 
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 use App\Models\PenjualanModel;
 use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -50,11 +52,22 @@ class PenjualansTable
               
             
             ])
+             ->emptyStateHeading('Tidak ada data laporan.')
+              ->emptyStateDescription('Silahkan buat faktur terlebih dahulu.')
+               ->emptyStateIcon('heroicon-o-presentation-chart-bar')
+               ->emptyStateActions([
+            Action::make('create')
+                ->label('Buat Faktur')
+                ->url(route('filament.admin.resources.fakturs.create'))
+                ->icon('heroicon-m-plus')
+                ->button(),
+        ])
             ->filters([
                 //
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

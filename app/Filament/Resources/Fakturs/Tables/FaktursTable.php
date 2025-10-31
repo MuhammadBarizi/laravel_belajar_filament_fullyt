@@ -32,6 +32,7 @@ class FaktursTable
                 TextColumn::make('charge'), 
                 TextColumn::make('total_final'), 
             ])
+           
             ->filters([
                 TrashedFilter::make(),
             ])
