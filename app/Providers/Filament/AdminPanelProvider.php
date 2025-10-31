@@ -49,7 +49,16 @@ class AdminPanelProvider extends PanelProvider
             // ->topNavigation()    
             ->sidebarWidth('20rem')
             ->sidebarCollapsibleOnDesktop()
-
+              ->colors([
+            'danger' => Color::Rose,
+            'gray' => Color::Gray,
+            'info' => Color::Blue,
+            'primary' => Color::Lime,
+            'success' => Color::Emerald,
+            'warning' => Color::Orange,
+              ])
+              ->viteTheme('resources/css/filament/admin/theme.css')
+            ->font('poppins')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
