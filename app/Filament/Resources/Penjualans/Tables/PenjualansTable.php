@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources\Penjualans\Tables;
 
+use Filament\Tables\Table;
+use App\Models\PenjualanModel;
+use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 
 class PenjualansTable
 {
@@ -31,11 +32,22 @@ class PenjualansTable
                 TextColumn::make('status')->label('Status')
                 ->searchable()
                 ->sortable()
-                ->badge(),
+                ->badge()
+                // make the resolver tolerant to unexpected types/values by removing the strict
+                // string type hint and adding a default arm to the match expression
+                ->color(fn ($state): string => match ($state) {
+                    'draft' => 'gray',
+                    'reviewing' => 'warning',
+                    'published' => 'success',
+                    'rejected' => 'danger',
+                    default => 'gray',
+                })
+                ->formatStateUsing(fn (PenjualanModel $record): string => $record->status == 0 ? 'Belum Lunas' : 'Lunas'),
                 TextColumn::make('jenis')->label('Jenis')
                 ->searchable()
                 ->sortable()
-                ->badge(),
+                ->badge()
+              
             
             ])
             ->filters([

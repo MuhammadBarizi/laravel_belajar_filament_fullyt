@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Fakturs\Tables;
 
 use Filament\Tables\Table;
+use App\Models\FakturModel;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
@@ -24,7 +25,9 @@ class FaktursTable
                 TextColumn::make('kode_customer'),
                 TextColumn::make('customer.nama_customer')->label('Nama Customer'),
                 TextColumn::make('ket_faktur'),
-                TextColumn::make('total'),
+                TextColumn::make('total')
+                ->formatStateUsing(fn (FakturModel $record): string => 'Rp ' . number_format($record->total, 0, ',', '.')),
+                
                 TextColumn::make('nominal_charge'), 
                 TextColumn::make('charge'), 
                 TextColumn::make('total_final'), 
