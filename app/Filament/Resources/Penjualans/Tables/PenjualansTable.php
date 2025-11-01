@@ -44,11 +44,7 @@ class PenjualansTable
                     'rejected' => 'danger',
                     default => 'gray',
                 })
-                ->formatStateUsing(fn (PenjualanModel $record): string => $record->status == 0 ? 'Belum Lunas' : 'Lunas'),
-                TextColumn::make('jenis')->label('Jenis')
-                ->searchable()
-                ->sortable()
-                ->badge()
+                ->formatStateUsing(fn (PenjualanModel $record): string => $record->status == 0 ? 'Belum Lunas' : 'Lunas')
               
             
             ])
@@ -59,7 +55,7 @@ class PenjualansTable
             Action::make('create')
                 ->label('Buat Faktur')
                 // point to the Faktur resource index route (use the resource slug as registered)
-                ->url(route('filament.admin.resources.kelola_faktur.index'))
+                ->url(route('filament.admin.resources.kelola_faktur.create'))
                 ->icon('heroicon-m-plus')
                 ->button(),
         ])

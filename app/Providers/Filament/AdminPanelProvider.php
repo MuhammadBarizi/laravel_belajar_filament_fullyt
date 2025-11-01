@@ -42,8 +42,8 @@ class AdminPanelProvider extends PanelProvider
                 'Master Data',
             ])
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                // AccountWidget::class,
+                // FilamentInfoWidget::class,
             ])
             ->spa()
             // ->topNavigation()    
