@@ -2,17 +2,18 @@
 
 namespace App\Filament\Resources\Barangs;
 
-use App\Filament\Resources\Barangs\Pages\CreateBarang;
+use BackedEnum;
+use App\Models\Barang;
+use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
 use App\Filament\Resources\Barangs\Pages\EditBarang;
 use App\Filament\Resources\Barangs\Pages\ListBarangs;
+use App\Filament\Resources\Barangs\Pages\CreateBarang;
 use App\Filament\Resources\Barangs\Schemas\BarangForm;
 use App\Filament\Resources\Barangs\Tables\BarangsTable;
-use App\Models\Barang;
-use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class BarangResource extends Resource
 {
@@ -29,7 +30,10 @@ class BarangResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return BarangsTable::configure($table);
+        return BarangsTable::configure($table)
+            ->bulkActions([
+                ExportBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array

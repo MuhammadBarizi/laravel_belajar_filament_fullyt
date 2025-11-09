@@ -6,7 +6,10 @@ use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Collection;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class CustomersTable
 {
@@ -29,6 +32,11 @@ class CustomersTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make(),
+                    BulkAction::make('export_pdf')
+                        ->label('Export PDF')
+                        ->url(fn (Collection $records): string => route('exports.customer.pdf', ['ids' => $records->pluck('id')->join(',')]))
+                        ->openUrlInNewTab(),
                 ]),
             ]);
     }
