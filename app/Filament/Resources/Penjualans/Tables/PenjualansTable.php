@@ -5,13 +5,14 @@ namespace App\Filament\Resources\Penjualans\Tables;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use App\Models\PenjualanModel;
+use Filament\Actions\BulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Collection;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class PenjualansTable
@@ -68,6 +69,12 @@ class PenjualansTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+            ])
+             ->headerActions([
+                // Excel export button for the table (uses pxlrbt/filament-excel)
+                ExportAction::make()->exports([
+                    \pxlrbt\FilamentExcel\Exports\ExcelExport::make()->fromTable(),
+                ]),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
